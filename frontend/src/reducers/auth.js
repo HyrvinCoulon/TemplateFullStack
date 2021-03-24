@@ -4,13 +4,14 @@ import { updateObject } from "./utility";
 const initialState = {
   token: null,
   error: null,
-  loading: false
+  loading: false,
+  list : []
 };
 
 const authStart = (state, action) => {
   return updateObject(state, {
     error: null,
-    loading: true
+    loading: true,
   });
 };
 

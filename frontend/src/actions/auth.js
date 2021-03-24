@@ -1,12 +1,16 @@
 import axios from "axios";
 import * as actionTypes from "./authTypes";
 
+export const address = "http://192.168.1.95:8000/"
+
+
+
 // Authentification debut
 export const authStart = () => {
   return {
     type: actionTypes.AUTH_START
   };
-};
+}
 
 // Succès Authentification
 export const authSuccess = token => {
@@ -14,7 +18,7 @@ export const authSuccess = token => {
     type: actionTypes.AUTH_SUCCESS,
     token: token
   };
-};
+}
 
 // Echec Authentification
 export const authFail = error => {
@@ -22,7 +26,7 @@ export const authFail = error => {
     type: actionTypes.AUTH_FAIL,
     error: error
   };
-};
+}
 
 
 // Deconnexion
@@ -32,7 +36,7 @@ export const logout = () => {
   return {
     type: actionTypes.AUTH_LOGOUT
   };
-};
+}
 
 /*export const checkAuthTimeout = expirationTime => {
   return dispatch => {
@@ -48,7 +52,7 @@ export const authLogin = (username, password) => {
   return dispatch => {
     dispatch(authStart());
     axios
-      .post("http://192.168.1.95:8000/rest-auth/login/", {
+      .post(address + "rest-auth/login/", {
         username: username,
         password: password
       })
@@ -65,7 +69,7 @@ export const authLogin = (username, password) => {
         dispatch(authFail(err));
       });
   };
-};
+}
 
 
 // Inscription
@@ -73,7 +77,7 @@ export const authSignup = (username, email, password) => {
   return dispatch => {
     dispatch(authStart());
     axios
-      .post("http://192.168.1.95:8000/rest-auth/registration/", {
+      .post(address + "rest-auth/registration/", {
         username: username,
         email: email,
         password1: password,
@@ -91,14 +95,28 @@ export const authSignup = (username, email, password) => {
         dispatch(authFail(err));
       });
   };
-};
+}
+
+// Fetch Users
+export const userList = () => {
+  var list = []
+    axios.get(address+"api/list/")
+        .then(response => {
+            list = response.data
+            console.log(list)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    return list;
+}
 
 
 // Check
 export const authCheckState = () => {
   return dispatch => {
     const token = localStorage.getItem("token");
-    console.log("token")
+    //console.log("token")
     if (token === undefined) {
       dispatch(logout());
     }else {
@@ -116,4 +134,4 @@ export const authCheckState = () => {
       dispatch(authSuccess(token));
     }
   };
-};
+}

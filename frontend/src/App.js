@@ -19,9 +19,7 @@ class App extends React.Component{
           <Route path="/" exact render={ () => <Home />}/>
           <Route path="/register" exact render={ () => <Register />}/>
           <Route path="/login" exact render={ () => <Login />}/>
-          <div>
-            Bienvenue
-          </div>
+          
         </BrowserRouter>
       );
   }

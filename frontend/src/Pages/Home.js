@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import {withRouter} from 'react-router-dom';
 import * as actions from "../actions/auth";
+import Listing from '../Components/Listing';
 
 class Home extends React.Component{
 
@@ -17,6 +18,8 @@ class Home extends React.Component{
         return(
             <div>
                 <Menu state={this.state.isAuthenticated} logout={this.state.logout}/>
+                <p> Welcome on this template   </p>
+                <Listing />
             </div>
         );
     }
