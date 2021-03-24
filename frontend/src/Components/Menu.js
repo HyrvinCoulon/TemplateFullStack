@@ -4,6 +4,11 @@ import {Link} from 'react-router-dom';
 
 class Menu extends React.Component{
 
+    constructor(props){
+        super(props)
+
+        this.state = {...this.props}
+    }
     
 
     render(){
@@ -16,6 +21,12 @@ class Menu extends React.Component{
                         <Navbar.Collapse id="navbar-toggle" >
                             <Nav className="ml-auto" >
                             <Link className="nav-link" to="/">Home</Link>
+                            {
+                                this.state.isAuthenticate 
+                                ? <Link className="nav-link" onClick={this.state.logout}>Logout</Link>
+                                : <Link className="nav-link" to="/login" >Login</Link>
+                                
+                            }
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

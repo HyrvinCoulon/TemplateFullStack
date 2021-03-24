@@ -25,7 +25,9 @@ SECRET_KEY = 'zn(=yq@vvasu)(-1qqj*q(ubl6gwxpl)ff8vs+lqpvuq!d(3(q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "192.168.1.95"
+]
 
 
 # Application definition
@@ -38,8 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
+    'rest_framework.authtoken',
+    'rest_auth',
     'polluser.apps.PolluserConfig',
+    'restapi.apps.RestapiConfig',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
 ]
+
+SITE_ID = 1 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'template.urls'
@@ -135,11 +148,28 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-REST_FRAMEWORK={
-    'DEFAULT_PERMISSIONS_CLASSES':[
-        'rest_framework.permissions.isAuthenticated'
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES':[
-        'rest_framework_simplejwt.authentication.JWTAuthentication'
-    ],
-}
+#REST_FRAMEWORK= {
+  #  'DEFAULT_PERMISSIONS_CLASSES':[
+ #           'rest_framework.permissions.AllowAny'
+    #]
+    #'DEFAULT_AUTHENTICATION_CLASSES':[
+     #   'rest_framework_simplejwt.authentication.JWTAuthentication'
+    #],
+#}
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_EMAIL_REQUIRED = False
+"""CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]"""

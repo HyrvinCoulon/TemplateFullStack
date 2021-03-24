@@ -4,17 +4,14 @@ import axios from 'axios';
 import {withRouter} from 'react-router-dom';
 import { connect } from "react-redux";
 import * as actions from "../actions/auth";
-
-class Register extends React.Component{
+class Login extends React.Component{
 
     constructor(props){
         super(props)
 
         this.state = {
             name : "",
-            email: "",
             password: "",
-            password2: "",
             errors: {
                 name: "",
                 password: "",
@@ -24,8 +21,6 @@ class Register extends React.Component{
 
         this.changeName = this.changeName.bind(this)
         this.changePassWord = this.changePassWord.bind(this)
-        this.changeEmail = this.changeEmail.bind(this)
-        this.changePassWord2 = this.changePassWord2.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
 
@@ -35,31 +30,20 @@ class Register extends React.Component{
         })
     }
 
-    changeEmail(event){
-        this.setState({
-            email:event.target.value
-        })
-    }
-
     changePassWord(event){
         this.setState({
             password:event.target.value
         })
     }
 
-    changePassWord2(event){
-        this.setState({
-            password2:event.target.value
-        })
-    }
 
     onSubmit(event){
         event.preventDefault()
 
 
         if(this.validate()){
-                this.props.onAuth(this.state.username, this.state.email, this.state.password)
-                /*axios.post('http://192.168.1.95:8000/api/list/', {
+            this.props.onAuth(this.state.name, this.state.password)
+                /*axios.post('http://192.168.1.95:8000/api/login/', {
                     name: this.state.name,
                     password: this.state.password
                 })
@@ -67,6 +51,7 @@ class Register extends React.Component{
                     //this.props.history.push("/")
                     })
                 .catch(error => console.log("Error "+ error))*/
+                this.props.history.push('/')
         }
 
     }
@@ -82,7 +67,7 @@ class Register extends React.Component{
 
         console.log(this.state.errors.name)
 
-        if(this.state.password !== this.state.password2){
+        if(this.state.password === ""){
             this.setState({
                 errors : {
                     password : "Entrez le même mot de passe svp...",
@@ -92,7 +77,7 @@ class Register extends React.Component{
 
         console.log(this.state.errors.password)
 
-        if(this.state.name !== "" && this.state.password === this.state.password2){
+        if(this.state.name !== "" && this.state.password !== ""){
             this.setState({
                 errors : {
                     error: true,
@@ -115,14 +100,6 @@ class Register extends React.Component{
                         />
                     </Form.Group>
                     <div className="text-danger">{this.state.errors.name}</div>
-                    
-                    <Form.Group>
-                        <Form.Control type="text"
-                        placeholder="Inserez votre email..."
-                        onChange={this.changeEmail}
-                        value={this.state.email}
-                        />
-                    </Form.Group>
 
                     <Form.Group>
                         <Form.Control type="password"
@@ -132,17 +109,11 @@ class Register extends React.Component{
                         />
                     </Form.Group>
 
-                    <Form.Group>
-                        <Form.Control type="password"
-                        placeholder="Inserez votre mot de passe..."
-                        onChange={this.changePassWord2}
-                        value={this.state.password2}
-                        />
-                    </Form.Group>
+                    
                     <div className="text-danger">{this.state.errors.password}</div>
 
                     <Button type="submit">
-                        Inscrire
+                        Connexion
                     </Button>
 
                 </Form>
@@ -151,19 +122,19 @@ class Register extends React.Component{
     }
 }
 
+
 const mapStateToProps = state => {
     return {
       loading: state.auth.loading,
       error: state.auth.error,
-      //token: state.auth.token
+      token: state.auth.token
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-      onAuth: (username, email, password) => dispatch(actions.authSignup(username, email, password))
+      onAuth: (username, password) => dispatch(actions.authLogin(username, password))
     };
 };
 
-export default connect(mapStateToProps,
-    mapDispatchToProps)(Register);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
