@@ -22,8 +22,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "webpack --mode development --watch ./src/index.js --output ./static/frontend/main.js",
-    "build": "webpack --mode production ./src/index.js --output ./static/frontend/main.js",
+    "dev": "webpack --mode development --watch ./src/index.js -o ./static/frontend/main.js",
+    "build": "webpack",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
