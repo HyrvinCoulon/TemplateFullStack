@@ -1,7 +1,6 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
 import '../styles/form.css';
-import axios from 'axios';
 import {withRouter} from 'react-router-dom';
 import { connect } from "react-redux";
 import * as actions from "../actions/auth";
@@ -94,7 +93,7 @@ class Login extends React.Component{
         return(
             <div>
                 <Form className="formstyle" onSubmit={this.onSubmit}>
-                    <h6 style={{marginLeft:'45%', color:'white'}}>Login</h6>
+                    <h6 style={{marginLeft:'45%', color:'white'}}>Login</h6><br></br>
                     <Form.Group>
                         <Form.Control className="control-type"
                         type="text"

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container, Navbar, Nav} from 'react-bootstrap';
+import '../styles/main.css';
 import {Link} from 'react-router-dom';
 
 class Menu extends React.Component{
@@ -13,8 +14,8 @@ class Menu extends React.Component{
 
     render(){
         return(
-            <Container>
-                <Navbar className="theme" expand="lg">
+            <Container className="theme">
+                <Navbar expand="lg">
                     <Navbar.Brand>Template FullStack</Navbar.Brand>
 
                     <Navbar.Toggle className="border-0" aria-controls="navbar-toggle"/>

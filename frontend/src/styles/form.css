@@ -6,7 +6,7 @@
     border:transparent;
     border-radius: 20px;
     padding: 2%;
-    box-shadow: 20px -10px 7px rgb(219, 219, 219);
+    box-shadow: 6px 6px 7px rgb(219, 219, 219), -6px -6px 7px rgb(219, 219, 219), 6px -6px 7px rgb(219, 219, 219), -6px 6px 7px rgb(219, 219, 219) ;
 }
 
 .control-type{

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
-import axios from 'axios';
-import {withRouter} from 'react-router-dom';
+import '../styles/form.css';
 import { connect } from "react-redux";
 import * as actions from "../actions/auth";
 
@@ -106,9 +105,11 @@ class Register extends React.Component{
     render(){
         return(
             <div>
-                <Form onSubmit={this.onSubmit}>
+                <Form className="formstyle" onSubmit={this.onSubmit}>
+                    <h6 style={{marginLeft:'42%', color:'white'}}>Register</h6><br></br>
                     <Form.Group>
-                        <Form.Control type="text"
+                        <Form.Control className="control-type"
+                        type="text"
                         placeholder="Inserez votre nom..."
                         onChange={this.changeName}
                         value={this.state.name}
@@ -117,7 +118,8 @@ class Register extends React.Component{
                     <div className="text-danger">{this.state.errors.name}</div>
                     
                     <Form.Group>
-                        <Form.Control type="text"
+                        <Form.Control className="control-type"
+                        type="text"
                         placeholder="Inserez votre email..."
                         onChange={this.changeEmail}
                         value={this.state.email}
@@ -125,7 +127,8 @@ class Register extends React.Component{
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Control type="password"
+                        <Form.Control className="control-type"
+                        type="password"
                         placeholder="Inserez votre mot de passe..."
                         onChange={this.changePassWord}
                         value={this.state.password}
@@ -133,7 +136,8 @@ class Register extends React.Component{
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Control type="password"
+                        <Form.Control className="control-type"
+                        type="password"
                         placeholder="Inserez votre mot de passe..."
                         onChange={this.changePassWord2}
                         value={this.state.password2}
@@ -141,7 +145,7 @@ class Register extends React.Component{
                     </Form.Group>
                     <div className="text-danger">{this.state.errors.password}</div>
 
-                    <Button type="submit">
+                    <Button className="btn-style" type="submit">
                         Inscrire
                     </Button>
 

@@ -44,7 +44,7 @@ class Listing extends React.Component{
 
     render(){
         return(
-            <Container style={{padding:'15px', margin:"0 10px 10px 0"}}>
+            <Container style={{padding:'15px'}}>
                 {this.Listings()}
             </Container>
         );

@@ -18,7 +18,8 @@ class Home extends React.Component{
         return(
             <div>
                 <Menu state={this.state.isAuthenticated} logout={this.state.logout}/>
-                <p> Welcome on this template   </p>
+                <br></br>
+                <p style={{marginLeft:"25%"}}> Welcome on this template   </p>
                 <Listing />
             </div>
         );
