@@ -1,0 +1,39 @@
+.formstyle{
+    margin-left:32%;
+    margin-top:10%;
+    width:35%;
+    background-color:aqua;
+    border:transparent;
+    border-radius: 20px;
+    padding: 2%;
+    box-shadow: 20px -10px 7px rgb(219, 219, 219);
+}
+
+.control-type{
+    text-decoration-color: white;
+    color:white;
+    background-color: transparent;
+    border: 1px solid white;
+    border-width: 0 0 1px 0;
+}
+
+
+.control-type::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+.control-type:focus{
+    color:white;
+    background-color: transparent;
+    border:transparent;
+}
+
+.btn-style{
+    margin-left:40%;
+    margin-top: 7%;
+    background-color: white;
+    color:aqua;
+    border:transparent;
+    border-radius: 20px;
+}
