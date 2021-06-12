@@ -89,9 +89,17 @@ class Register extends React.Component{
             })
         }
 
+        if(this.state.password.length < 8){
+            this.setState({
+                errors : {
+                    password : "Mot de passe court. Au moins 8 caractères...",
+                }
+            })
+        }
+
         console.log(this.state.errors.password)
 
-        if(this.state.name !== "" && this.state.password === this.state.password2){
+        if(this.state.name !== "" && this.state.password.length >= 8 && this.state.password === this.state.password2){
             this.setState({
                 errors : {
                     error: true,

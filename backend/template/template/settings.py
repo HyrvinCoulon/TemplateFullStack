@@ -26,7 +26,8 @@ SECRET_KEY = 'zn(=yq@vvasu)(-1qqj*q(ubl6gwxpl)ff8vs+lqpvuq!d(3(q'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "192.168.1.95"
+    "192.168.1.95",
+    "*"
 ]
 
 
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
 SITE_ID = 1 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -61,7 +63,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'template.urls'
@@ -148,28 +149,23 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-#REST_FRAMEWORK= {
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+AUTHENTICATION_BACKENDS = (    
+    "django.contrib.auth.backends.ModelBackend",    
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+REST_FRAMEWORK= {
   #  'DEFAULT_PERMISSIONS_CLASSES':[
  #           'rest_framework.permissions.AllowAny'
     #]
-    #'DEFAULT_AUTHENTICATION_CLASSES':[
-     #   'rest_framework_simplejwt.authentication.JWTAuthentication'
-    #],
-#}
+    'DEFAULT_AUTHENTICATION_CLASSES': [        
+        'rest_framework.authentication.TokenAuthentication',    
+    ],
+}
 
 CORS_ORIGIN_ALLOW_ALL = True
-
+AUTH_USER_MODEL = 'polluser.User'
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_AUTHENTICATION_METHOD = "username"
 ACCOUNT_EMAIL_REQUIRED = False
-"""CORS_ALLOW_HEADERS = [
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-]"""

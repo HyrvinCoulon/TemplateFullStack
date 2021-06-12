@@ -1,12 +1,9 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import axios from 'axios';
-
 import PropTypes from 'prop-types';
-import * as actions from "../actions/auth";
 import { connect } from "react-redux";
 import Cards from './Card';
-import { getUsers } from '../actions/usersActions';
+import { getUsers, getObjects } from '../actions/usersActions';
 
 
 class Listing extends React.Component{
@@ -24,14 +21,7 @@ class Listing extends React.Component{
         }
     }*/
 
-    componentDidMount(){
-        /*axios.get(actions.address+"api/list/")
-        .then(response => {
-            this.setState({users: response.data})
-        })
-        .catch(err => {
-          console.log(err)
-        })*/
+    componentDidMount(){        
         this.props.getUsers()
     }
 
@@ -55,8 +45,9 @@ class Listing extends React.Component{
 
 const mapStateToProps = state => ({
     users: state.set.users,
+    objects : state.set.objects
 });
 
 
 
-export default connect(mapStateToProps, {getUsers})(Listing);
+export default connect(mapStateToProps, {getUsers, getObjects})(Listing);

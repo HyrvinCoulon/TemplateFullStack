@@ -20,8 +20,10 @@ class Menu extends React.Component{
 
                     <Navbar.Toggle className="border-0" aria-controls="navbar-toggle"/>
                         <Navbar.Collapse id="navbar-toggle" >
-                            <Nav className="ml-auto" >
+                            <Nav className="ml-auto justify-content-end" >
                             <Link className="nav-link" to="/">Home</Link>
+                            <Link className="nav-link" to="/object">Save article</Link>
+                            <Link className="nav-link" to="/list_object">List article</Link>
                             {
                                 this.state.isAuthenticate 
                                 ? <Link className="nav-link" onClick={this.state.logout}>Logout</Link>

@@ -12,6 +12,7 @@ class Home extends React.Component{
         super(props)
 
         this.state = {...this.props}
+        console.log(this.state)
     }
 
     render(){

@@ -6,6 +6,8 @@ import Register from './Pages/Register';
 import Login from './Pages/Login';
 import { connect } from "react-redux";
 import * as actions from "./actions/auth";
+import ObjectSave from './Pages/ObjectSave';
+import ArticleListing from './Components/ArticleListing';
 
 class App extends React.Component{
 
@@ -16,9 +18,11 @@ class App extends React.Component{
   render(){
       return (
         <BrowserRouter>
-          <Route path="/" exact render={ () => <Home />}/>
+          <Route path="/" exact render={ () => <Home state={this.props.state} />}/>
           <Route path="/register" exact render={ () => <Register />}/>
           <Route path="/login" exact render={ () => <Login />}/>
+          <Route path="/object" exact render={ () => <ObjectSave />} />
+          <Route path="/list_object" exact render={ () => <ArticleListing />}/>
           
         </BrowserRouter>
       );
@@ -30,9 +34,10 @@ const mapStateToProps = state => {
   return {
     isAuthenticated: state.auth.token !== null
   };
-};
+}; 
 
 
+// 
 const mapDispatchToProps = dispatch => {
   return {
     onTryAutoSignup: () => dispatch(actions.authCheckState())

@@ -6,8 +6,8 @@ class Cards extends React.Component{
     render(){
         return(
             <Card style={{margin:"10px 0", padding:"5px"}}>
-                <Card.Title>{this.props.user.username}</Card.Title>
-                <Card.Text>This is one of the user.</Card.Text>
+                <Card.Title>{this.props.object.name}</Card.Title>
+                <Card.Text>{this.props.object.description}</Card.Text>
             </Card>
         )
     }

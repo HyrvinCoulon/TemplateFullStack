@@ -17,7 +17,8 @@ class Login extends React.Component{
                 name: "",
                 password: "",
                 error: false,
-            }
+            },
+            ...this.props
         }
 
         this.changeName = this.changeName.bind(this)
@@ -44,14 +45,6 @@ class Login extends React.Component{
 
         if(this.validate()){
             this.props.onAuth(this.state.name, this.state.password)
-                /*axios.post('http://192.168.1.95:8000/api/login/', {
-                    name: this.state.name,
-                    password: this.state.password
-                })
-                .then(response => {console.log(response)
-                    //this.props.history.push("/")
-                    })
-                .catch(error => console.log("Error "+ error))*/
                 this.props.history.push('/')
         }
 

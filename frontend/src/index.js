@@ -13,8 +13,8 @@ import action from "./reducers/usersActions";
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  auth: authReducer,
-  set: action,
+  auth: authReducer, // variable for authentication
+  set: action, // variable for action
 });
 
 const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)));
